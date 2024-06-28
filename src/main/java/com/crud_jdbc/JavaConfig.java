@@ -3,6 +3,7 @@ package com.crud_jdbc;
 import com.crud_jdbc.dao.EmpDao;
 import com.crud_jdbc.dao.EmpDaoImpl;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -10,6 +11,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.DataSource;
 
 @Configuration
+@ComponentScan(basePackages = {"com.crud_jdbc.dao"})
 public class JavaConfig {
 
     @Bean("dataSource")
@@ -29,10 +31,10 @@ public class JavaConfig {
         return jdbcTemplate;
     }
 
-    @Bean("empDao")
-    public EmpDaoImpl getEmpDao(){
-        EmpDaoImpl empDao = new EmpDaoImpl();
-        empDao.setJdbcTemplate(getJdbcTemplate());
-        return empDao;
-    }
+//    @Bean("empDao")
+//    public EmpDaoImpl getEmpDao(){
+//        EmpDaoImpl empDao = new EmpDaoImpl();
+//        empDao.setJdbcTemplate(getJdbcTemplate());
+//        return empDao;
+//    }
 }

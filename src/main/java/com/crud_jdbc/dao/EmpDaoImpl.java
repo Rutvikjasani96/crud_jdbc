@@ -1,11 +1,15 @@
 package com.crud_jdbc.dao;
 
 import com.crud_jdbc.entites.Emp;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component("empDao")
 public class EmpDaoImpl implements EmpDao{
+    @Autowired
     private JdbcTemplate jdbcTemplate;
     @Override
     public int insertData(Emp emp) {
