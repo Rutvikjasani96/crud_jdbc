@@ -3,6 +3,7 @@ package com.crud_jdbc;
 import com.crud_jdbc.dao.EmpDao;
 import com.crud_jdbc.entites.Emp;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.SQLOutput;
@@ -17,7 +18,12 @@ public class App
     public static void main( String[] args )
     {
         System.out.println( "Hello World!" );
-        ApplicationContext context = new ClassPathXmlApplicationContext("empconfig.xml");
+//        Used xml file
+//        ApplicationContext context = new ClassPathXmlApplicationContext("empconfig.xml");
+
+//        Used Java config file
+        ApplicationContext context = new AnnotationConfigApplicationContext(JavaConfig.class);
+
         EmpDao empDao = context.getBean("empDao",EmpDao.class);
 
 

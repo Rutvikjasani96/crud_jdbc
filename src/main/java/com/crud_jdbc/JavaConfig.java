@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 @Configuration
 public class JavaConfig {
 
-    @Bean
+    @Bean("dataSource")
     public DataSource getDataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
@@ -22,14 +22,14 @@ public class JavaConfig {
         return dataSource;
     }
 
-    @Bean
+    @Bean("jdbcTemplate")
     public JdbcTemplate getJdbcTemplate(){
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
         jdbcTemplate.setDataSource(getDataSource());
-        return getJdbcTemplate();
+        return jdbcTemplate;
     }
 
-    @Bean
+    @Bean("empDao")
     public EmpDaoImpl getEmpDao(){
         EmpDaoImpl empDao = new EmpDaoImpl();
         empDao.setJdbcTemplate(getJdbcTemplate());
